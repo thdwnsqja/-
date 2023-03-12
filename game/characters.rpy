@@ -31,4 +31,4 @@ define NARR = Character('나레이션', color= "#10942c")
 define SYSTEM = Character('시스템', color= "#ffffff")
 define ETC5 = Character('마족', color= "#fcfcfc")
 
-#144
+#144 , 240 , 
