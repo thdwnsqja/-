@@ -1,0 +1,10 @@
+# VS Code
+.vscode/
+
+# Game Saves
+saves/
+
+# Logs
+errors.txt
+log.txt
+traceback.txt
