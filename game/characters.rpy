@@ -30,5 +30,6 @@ define GORREM = Character('골렘', color= "#8d6853fa")
 define NARR = Character('나레이션', color= "#10942c")
 define SYSTEM = Character('시스템', color= "#ffffff")
 define ETC5 = Character('마족', color= "#fcfcfc")
-
-#144 , 240 , 
+efine ETC6 = Character('대사제', color= "#fcfcfc")
+#선택지 :144 , 240 , 
+#글자 크기 크게 : 359 ,363
