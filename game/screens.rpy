@@ -1,1491 +1,1002 @@
-﻿################################################################################
-## 초기화
-################################################################################
+# 이 파일에 게임 스크립트를 입력합니다.
+
+# image 문을 사용해 이미지를 정의합니다.
+# image eileen happy = "eileen_happy.png"
+
+# 여기에서부터 게임이 시작합니다.
+label start:
+
+    NARR """
+    [[이 세상을 구원해 줄 용사여 나의 부름에 답하여 이 곳으로 소환되거라.]
+    """
+
+    NARR "내 머릿속에서 이상한 목소리가 들렸다.\n머릿속이 조용해지자 내가 있던 곳은 집이 아닌 처음 보는 공간이었다." with dissolve
+
+    AL "용사여 잘 왔다. 이 몸은 다르한 대륙 서쪽에 있는 코노로 왕국의 왕 알리라고 하네"
+    
+    NARR "알리는 나한테 자기소개를한 뒤 질문을 한다."
+
+    AL "용사여 너의 이름이 무엇이냐?"
+
+    python:
+        povname = renpy.input("나의 이름은?", length=32)
+        povname = povname.strip()
+        if not povname:
+            povname = "김 한"
+        USER = Character("[povname]")
+    
+    USER "저는 [povname] 입니다."
+    NARR  " 나는 알리한테 자기소개를한다."
+    AL "[povname](이)라.... 좋은 이름이구나 "
+    NARR "나는 알리 한테 질문을 한다."
+    USER "그보다 아까 다르한 대륙? 코노로? 라고 하셨는데 그게 뭔지 알려주실 수 있나요?"
+    AL "이곳은 네가 있던 곳이 아닌 다른 세계다. "
+    NARR "알리는 간단하게 설명을 해준다."
+    USER "다른... 세계...? 그러면 제가 있던 세계로 돌아갈 방법은 있는 건가요?"
+    AL "미안하지만 그거는 어려울거 같구나. 미안하다."
+    USER "그러면 저를 여기로 소환한 이유가 무엇이죠?"
+    NARR "나는 알리한테 다시 한번 질문을한다."
+    AL "용사 [povname] 나를 도와 마왕을 죽여줄 수 있나?"
+    USER "마왕...?"
+    AL "만약 나를 도와 마왕을 죽여주면 네가 원하는 소원 한 가지를 들어주겠다."
+    USER "죄송하지만.. 사람을 죽여본 적 없는 선량한 시민입니다."
+    NARR "라고 말을 하자 알리의 옆에 있던 남자가 큰소리로 화를 내며 말을 한다."
+    JAN "시끄럽도다! 너는 폐하께서 소환하신 용사다.\n잔말 말고 어서 가서 마왕의 목을 가져와 받쳐라!!!"
+    AL "잔 조용히해라!"
+    NARR "알리는 옆에 있는 남자의 이름을 부르고 조용히 하라고 하자 잔은 입을 다문다."
+    JAN "하지만 폐하! 어서 용사한테 마왕을 죽이고 오라고 명령을 하셔야 됩니다!"
+    NARR "잔의 말을 들은 나는 한순간 짜증이 올라와 잔을 '죽이고 싶다.'라는 생각이 들었다."
+    NARR "그 순간 나의 시야에는 하나의 시스템 문구 창이 뜬다."
+    SYSTEM "목표를 정했습니다."
+    NARR "시스템은 목표를 알리와 잔을 가리켰다. 놀라고 있던 와중 창이 다시 뜬다."
+    SYSTEM "발사하겠습니까?"
+    NARR "라는 문구가 떴다."
+    menu:
+        "발사하겠습니까?"
+
+        "발사":
+            jump did_fire
+        "취소":
+            jump cancel_fire
+label did_fire:
+    USER "발... 사?"
+    NARR "나는 창에 떠있는 문구를 읽자.\n내 왼쪽 눈에서 한 줄기의 [[레이저]가 알리와 잔을 향해 발사된다."
+    NARR "그러자 가만히 서 있던 마튼이 보호막을 펼쳤지만,\n한발 빨랐던 [[레이저]가 알리와 잔을 관통한다."
+    MA "뭐하는 짓이냐!!!"
+    NARR "마튼이 소리지르자 문이 열린다."
+    ALA "무슨 소란이냐!!"
+    MA "알레아님!!"
+    NARR "문을 열고 들어온 것은 내 또래의 여자였다."
+    ALA "마튼! 방금 그건 무슨 소리인지 설명을 해주거라."
+    NARR "마튼은 방금까지 있었던 이야기를 설명한다."
+    NARR "설명을 들은 알레아는 나를 보며 말을 한다."
+    ALA "그러면 여기 있는 자가 아버지를 죽였다는 건가?"
+    MA "그렇습니다."
+    ALA "병사들이여 여기 있는 용사를 왕족 살인죄로 감옥에 쳐넣어라!!"
+    NARR "알레아의 말에 2명의 병사들이 나를 끌고 지하로 향한다."
+    NARR "그렇게 나는 지하에 있는 감옥에 수감되었다."
+    ETC "앞으로 이곳이 네가 살 곳이다."
+    NARR "나를 감옥에 넣은 병사가 말을 한다.\n그리고 알레아는 나를 찾아와 내 앞으로 말을 한다."
+    ALA "용사 김 한.. 아니 범죄자 김 한 아버지를 살해한 이유는 뭐지?"
+    USER "그냥 실수였다고!"
+    ALA "실수..?"
+    USER "어 갑자기 내 눈에서 '발사하겠습니까?'라는 메시지가 떠서 나는 그걸 읽었을 뿐이야!"
+    ALA "그런가.. 실수라.. 그래 알았다."
+    NARR "알레아는 내 말을 듣고 일어 스며 말했다."
+    ALA "김 한 네가 한 말이 사실이라고 해도 너는 왕을 살해한 범죄자다.\n그건 변하지 않는다. 그리고 형벌은 100년 나중에 또 오마"
+    NARR "알레아는 지하를 나간다."
+    NARR "그렇게 다음날.\n알레아가 나를 다시 찾아왔다."
+    ALA "좋음 아침이야 김 한 감옥에서의 밤은 어땠어?"
+    NARR "자고 있던 나는 알레아의 말에 잠에서 깬다."
+    USER "습기 빼면 괜찮은 거 같은데? 그보다 오늘은 무슨 일로 왔지?"
+    ALA "네가 어제 아버지를 죽인 바람에 나는 하루아침에 왕이 됐어"
+    USER "그래? 그거 잘 됐네 그러면 왕이 된 기념으로 나 석방해 줄 수 있어?"
+    ALA "바보 같은 소리하지마"
+    USER "아쉽네"
+    ALA "농담을 하는 거 보면 아직까지는 지낼만 한가 보네 그러면 나중에 다시 올게"
+    NARR "그렇게 시간이 지나고 내가 감옥에 들어오고 10일 정도 지났을 때 감옥을 지키는 병사들이 급하게 지상으로 올라간다."
+    "챕터1.마족의 나라"
+    USER "다들 왜 저렇게 바쁜거야?"
+    NARR "내 질문에 병사가 답을 한다."
+    ETC "나도 모르지"
+    USER "거짓말하지 말고 방금 병사랑 얘기했잖아?\n여기에서 썩어 가고 있는데 그 정도는 알려줄 수 있지 않아?"
+    ETC "아마도 마물의 습격이겠지"
+    USER "마물이 있구나"
+    ETC "밖에 상황이 어떤지는 모르겠는데,\n여기에서 일하는 사람들 까지 가는 거 보면 보통 녀석이 아니라는 거지"
+    USER "그렇구나.. 나도 그렇고 너도 그렇고 이게 뭐냐...."
+    ETC "인생이 다 그렇지 너도 전 폐하를 죽이지 않았으면 여기에서 이러고 있지 않았을 테니까"
+    USER "그치.."
+    NARR "나는 옆에 있던 병사랑 얘기를 하면서 시간을 보내고 있었다.\n처음에는 아무런 말도 안 했는데 계속 있다 보니까 서로 잡다한 얘기를 하게 되었다."
+    NARR "시간이 지나고 시끄러웠던 밖은 다시 조용해졌다.\n'드디어 끝났다'라는 생각을 하게 되었을 때 감옥으로 걸어오는 발소리가 들었다." 
+    NARR "뚜벅 뚜벅 뚜벅 뚜벅 뚜벅 뚜벅 뚜벅 뚜벅초"
+    NARR "발소리가 가까워지자 병사는 떨리는 목소리로 말을 한다."
+    ETC "누.... 누구냐!! 머... 멈춰라!"
+    NARR "멀어서 잘 안 보였는데, 가까이서 보니까 사람이라고 하기에는 사람이 아닌 다른 느낌의 무언가였다."
+    NARR "내가 생각을 하고 있을 때 병사가 입을 열며 말했다."
+    ETC "마.... 마족이.. 왜.. 여기에..!"
+    NARR "감옥으로 온 마족이 말을 한다."
+    ETC5 "이 몸의 이름은 마왕 디아블로다."
+    NARR "병사 앞에 온 마족은 자기 자신을 마왕이라고 칭했다."
+    ETC "마... 마왕 이라고? 여기에 온 이유가 뭐지?!"
+    NARR "병사는 디아블로를 향해 검을 꺼내어 말했다."
+    DAV "이번에는 살인의 목적으로 오지 않아서 다행으로 여겨라."
+    NARR "디아블로는 살기를 내뿜자 병사는 그대로 주저앉았고"
+    SYSTEM "표적을 정합니다."
+    NARR "내 시야에는 시스템의 문구가 떴고, 표적은 디아블로로 향했다."
+    SYSTEM "발사하겠습니까?"
+    NARR "시스템이 문구가 뜨자 디아블로는 나를 뚫어져라 쳐다보고 있었다.\n디아블로를 본 순간 나는 발사라고 외쳤다."
+    USER "ㅂ... 발사!!"
+    NARR "나의 왼쪽눈에는 [[레이저]가 나갔고 디아블로의 몸을 관통했다."
+    USER "죽은...건가?"
+    NARR "배에 구멍이 뚫린 디아블로의 몸은 다시 재생이 되어 상처 하나 없이 완전하게 복구됐다."
+    DAV "그래 이거구나 용사여"
+    NARR "몸이 다시 재생된 디아블로는 나한테 말을 걸었다."
+    DAV "용사여 방금 그 능력으로 왕을 죽인 거냐?"
+    NARR "디아블로가 나한테 물어봤지만 나는 아무런 말도 안 했다."
+    USER "....................................."
+    DAV  "용사 다시 한번 묻겠다. 네가 이 나라의 왕을 죽인 것이냐?"
+    NARR "디아블로가 다시 묻자 나는 답을 했다."
+    USER "일단은... 그렇지?"
+    NARR "그 말을 들은 디아블로는 웃는다.."
+    DAV "하하하하!!!!!!!!!!!!"
+    NARR "큰 소리로 웃은 디아블로는 나한테 한 가지의 질문을 했다."
+    DAV "용사여 마족의 편에서 스지 않겠나?"
+    NARR "황당한 질문을 받은 나는 어이없다는 표정으로 말을 한다."
+    USER "나보고 지금 인간을 적으로 만들라는 거냐?"
+    DAV "그렇다."
+    USER "내가 너를 왜 도와줘야 되지?"
+    DAV "이런 감옥에서 썩힐빠엔 나랑 같이 가는게 어때?"
+    NARR "나는 디아블로 한테 물었다."
+    USER "너랑 같이? 왜 하필 나지?"
+    NARR "디아블로는 말을 이어 갔다."
+    DAV "그러는 너는 여기에 평생 썩을 건가?"
+    NARR "디아블로의 말에 나는 고민을 한 뒤 말을 했다."
+    USER "여기보다는 너랑 같이 가는 게 좋을 거 같기도.. 하고?"
+    NARR "내 말을 들은 디아블로는 웃으면서 말을 한다."
+    DAV "후하하하하!! 좋은 선택을했다. 용사!!"
+    NARR "디아블로는 쇠창살을 손으로 가볍게 부신 다음 손을 내밀었다."
+    DAV "잡아라 지금부터 많이 바빠질 것이다."
+    NARR "나는 디아블로의 손을 잡고 감옥 밖으로 나갔다."
+    "성 밖"
+    NARR "내가 본 밖의 환경은 싸움의 흔적은 있지만 사상자는 없었다."
+    DAV "디아블로 : 그러면 가면서 이야기를 하지 [[소환술]!"
+    NARR "디아블로는 소환술로 드래곤을 꺼냈다. 드래곤의 위에 올라탄 디아블로는 나한테 손을 내밀었다."
+    NARR "내가 디아블로의 손을 잡으려고 하자 알레아가 멀리서 말을했다."
+    ALA "[povname] 당장 마왕 한테서 떨어져!!"
+    DAV "알리의 딸이군"
+    ALA "마왕.... 갑자기 나타나서 무슨 짓이냐!! 전쟁이라도 하고 싶은 것이냐?!!"
+    DAV "전쟁? 나는 원한다면 받아줄수있다. 하지만 지금 너의 나라의 상태를 보아라!!\n이 몸 한 명의 등장으로 거의 다 전멸이지 않냐? 잘 생각해라 코노로의 새로운 왕이여"
+    NARR "디아블로는 알레아한테 충고를 하고 날아간다."
+    "마족령 가는길"
+    DAV "그래서 용사 이름이 뭐냐?"
+    USER "[povname]"
+    DAV "괜찮은 이름이군"
+    NARR "나는 디아블로 한테 질문을 한다."
+    USER "마왕님이라고 했나? 궁금한게 있어"
+    DAV "편안하게 디아블로라고 해도 좋다. 궁금한 게 무엇이냐?"
+    USER "이렇게 까지 해서 나를 구해준 이유가 뭐지?"
+    NARR "나는 디아블로 한테 물고, 디아블로는 나의 질문에 답했다."
+    DAV "나는 너의 힘을 빌려 교황이라는 자를 죽이려고 한다."
+    USER "교황?"
+    DAV "그렇다."
+    USER "그거라면 너 혼자서도 되지 않아?"
+    DAV "혼자서? 모른다. 하지만 질 확률이 더 크다. 그리고 교황은 한 명이 아니라 다른 대륙에도 있다.\n만약 그 녀석들까지 온다면 우리 마족은 단숨에 전멸할 것이다."
+    NARR "디아블로는 한 명의 교황이 마왕을 능가할 힘을 가지고 있다고 했다.\n그렇기에 용사인 나를 코노로 왕국을 습격해서 나를 데려왔다고 했다."
+    "마족령"
+    DAV "도착했다. 용사"
+    USER "편하게 [povname](이)라고 불러도 돼"
+    DAV "알겠다."
+    NARR "나는 디아블로의 뒤를 따라 마족령으로 들어갔다.\n마족령은 만화에서 나온 것처럼 괴상하지 않고, 인간들처럼 평범한 삶을 살고 있었다."
+    NARR "디아블로가 돌아오자 2명의 마족들이 디아블로의 앞에 나타났다.\n두 마족의 이름은 자켄 이랑 아가레스 라고 하는 마족이었다."
+    KEN "마왕님 다녀오셨습니까?"
+    DAV "자켄 이구나 사냥이라고 한 건가? 고생했다."
+    KEN "감사합니다."
+    AGARES "그보다 마왕님 뒤에 있는 자는 누굽니까??"
+    DAV "여기있는 자는 이번에 소환된 용사다. 코노로의 알리 왕을 죽인 녀석이고,\n교황과의 싸움에서 필요해서 데려왔다."
+    NARR "그 말을 들은 아가레스랑 자켄 그리고 다른 마족들이 놀랐고, 아가레스는 놀란 말투로 말을 했다."
+    AGARES "마....마왕님 그자는 용사입니다! 인간이라고요!\n아무리 인간의 왕을 죽였다 한들 경계도 안하고\n마족령에 데려오는 것은 아니지 않습니까?"
+    DAV "그렇기는 하지 그런데 그런데 이 몸이 하겠다는데 불만이라도 있나 아가레스?"
+    AGARES "아..... 아닙니다. 마왕님.."
+    NARR "그렇게 디아블로는 나를 데리고 마왕의 성으로 들어갔다."
+    "마왕의 성"
+    DAV "[povname]이여 어떤가? 짐의 나라에 온 걸 환영한다."
+    USER "내가 생각한 것보다는 괜찮은 것 같네.."
+    DAV "그런가? 다행이구나 앞으로는 여기서 지낼 거니까 편하게 있어라"
+    NARR "내가 마족령에 들어온지 3일이 지났을때 다른 마족들이 시위를 했다."
+    AGARES "마왕님!! 지금 다른 마족들이 용사를 내쫓으라고 시위를 하고 있습니다."
+    DAV "[povname]을(를) 말이냐?"
+    AGARES "그... 그렇습니다."
+    NARR "아가레스의 말을 들은 디아블로가 창문을 보자\n마족들은 내 이름을 적은 플래카드를 들고 시위를 하고 있었다."
+    NARR "디아블로는 그 장면을 보고 나서 창문으로 점프했다.\n디아블로의 점프를 보고 놀란 나는 창밖을 내다보자 디아블로의 목소리가 위에서 들렸다."
+    DAV "마족들이여!! 짐의 말을 잘 듣거라!! 언젠가는 교황이 우리를 공격하러 올것이다!! 나는 그것에 대비해 용사를 우리편으로 만들었다!! 이번 용사는 나랑 같이 교황을 죽이기로 약속을 한 사나이다!! 그것에 대해 무엇이 불만이냐!!"
+    NARR "디아블로의 말이 끝나자 마족들은 화를 냈고 디아블로 앞에 한 명의 마족이 나타났다.\n그 마족의 이름은 무르무르였다."
+    MU "마왕님 잘 생각해 보십쇼 용사라는 자가 우리를 배신해 마족들을 죽이고\n교황의 편에 서면 그때는 어떻게 하실 겁니까?"
+    DAV "흠.. 그럴 수도 있구나.."
+    USER "네가 설득을 당하면 어떡하냐!!"
+    NARR "나는 큰소리로 말했고, 그 말을 들은 디아블로는 나를 한번 쳐다보고 다시 말을 했다."
+    DAV "그러면 이렇게 하지 만약에 김 한이 우리를 배신하고\n교황의 편에서 스면 나는 그 즉시 다른 마왕들과 함께 이 세상을 멸망 시킬 것이다."
+    ETC1 "디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로! 디아블로!"
+    NARR "그 말은 평범한 인간이 내게는 말이 안 되는 소리 였지만\n시위를 하고 있던 마족들은 디아블로의 이름을 외치며 찬양하듯 말했다."
+    NARR "그리고 그 광경을 본 무르무르가 다시 입을 열었다."
+    MU "그렇게 까지 하실 필요는 없는 거 같습니다."
+    DAV "그러면 더 좋은 방법이 있나?"
+    MU "그렇습니다."
+    NARR "디아블로는 무르무르의 말에 흥미가 생겼는지 어떤 방법인지 물어본다."
+    MU "알겠습니다. 마왕님 용사 [povname] 이랑 영혼의 계약을 하는 게 어떻습니까?"
+    DAV "영혼의 계약?"
+    MU "그렇습니다. 만약 용사가 마왕님을 배신하면 용사의 심장이 멈추는 조건으로 하는 게 어떻습니까?"
+    NARR  "무르무르가 말을 하자 다른 마족들은 아쉬워 하는 모습을 보였다.\n그리고 그 말을 들은 디아블로는 잠시 고민을 한 뒤 나를 불러 말을 했다."
+    DAV "[povname]이여 자네한테는 미안하지만 여기에 지낼 거면 영혼의 계약을 하는 게 좋을 것 같구나"
+    NARR "디아블로의 말이 끝나자 나는 질문을  했다."
+    USER "디아블로 영혼의 계약이 뭔데?"
+    NARR "나는 디아블로한테 영혼의 계약이 무엇 인지에 대해 물어봤다."
+    MU "영혼의 계약이란 두 개의 영혼을 걸고 하는 계약 즉 인간들의 노예들한테 자주 쓰이는 계약이다.\n계약을 어길 시 그 자의 심장은 그 순간 멈춘다. 어떤가 용사여 하겠나?"
+    NARR "대답은 디아블로 대신 무르무르가 말을 했고, 그 말을 들은 나는 고민을 하고 답을 했다."
+    USER "그러면 그거 말고는 내가 하고 싶은 대로 하면 되는 거지?"
+    MU "그렇다."
+    DAV "너는 괜찮은 것이냐?"
+    NARR "나는 망설임 하나 없이 바로 답을 했다."
+    USER "여기가 아니면 살 곳도 없는데 어쩌겠어 영혼의 계약인지 뭔지 하자"
+    MU "그러면 마왕님 계약을 시작하겠습니다."
+    NARR "무르무르가 주문을 외우자 나랑 디아블로의 주위를 영혼들이 둘러쌓았다.\n그리고 시간이 지나자 영혼들이 사라졌다."
+    USER "뭐야? 이게 끝이야?"
+    DAV "그런거 같구나 그러면 이제 충분히 만족했나??"
+    NARR "영혼의 계약이 완료되고 대부분의 마족들은 나를 경계하지 않았다."
+    "그렇게 2개월이 지나고"
+    NARR "나는 디아블로의 옆에서 마족들의 생활이나 하는 일 등을 보았다.\n내가 생각한 것처럼 나쁜 짓은커녕 평범하게 숲에서 몬스터를 잡아오거나 그 정도였다."
+    NARR "저녁이 되고 자켄이랑 아가라스가 해수라는 몬스터를 잡아왔다."
+    DAV "해수는 처음보나?"
+    NARR "디아블로가 나한테 물었다."
+    USER "해수가 뭐야?"
+    DAV "바다에 사는 커다란 물고기 같은 거니까 먹어보면 좋아할 거다. 그러면 오늘은 밤은 파티다!!!!!!!!!!"
+    NARR "그렇게 우리들은 해수 고기 파티를 하고 있던 와중 무르무르가 나한테 다가왔다."
+    MU "용사여 마법을 배워보지 않겠나?"
+    USER "마법..?"
+    MU "그렇다. 내가 알려 줄 수 있는 건 간단한 암흑 계열 마법뿐이다."
+    USER "암흑..마법? 나는 용사인데 빛의 마법이나 불의 마법 그런 거 배워야 되는 거 아니야?"
+    MU "왜 그렇게 생각하지?"
+    USER "아니 대부분의 용사들은 빛의 마법이나 막 그런 거 쓰지 않아?"
+    MU "네 말이 맞지 근데 너는 특이 체질이다."
+    USER "특이 체질..? [[레이저]면 빛의 마법 아니야??"
+    MU "음.. 그렇게도 볼 수 있지만 사실 너는.."
+    NARR "무르무르가 말을 하려는 순간 파티장에서 마족들의 환호 소리가 들렸다.\n무르무르랑 나는 환호 소리가 들린 곳으로 가보았다."
+    NARR "그곳에서는 아가레스랑 디아블로의 팔씨름 장면이었다. 승자는 디아블로였다.\n팔씨름에서 이긴 디아블로는 나의 이름을 부르면서 말했다."
+    DAV "어이!! [povname]!!! 너도 와서 팔씨름 한판해볼래?!"
+    NARR "술을 마시고 취한 디아블로가 나한테 팔씨름을 하자고 권유했다."
+    USER "어이 그건 아니지! 내가 너랑 팔씨름을 하면 내 팔은 그대로 아작 나는데 하겠냐?!"
+    NARR "나는 바로 거절 했다."
+    DAV "푸하하하!! 그래 나중에 꼭 하자꾸나!"
+    NARR "나를 데리고 온 디아블로는 자신이 마왕이라는 존재가 아닌 한 명의 마족으로써 다른 마족들이랑 놀았다."
+    "그렇게 다음날 디아블로의 방"
+    USER "디아블로 그만 자고 일어나"
+    DAV "으윽.. 어제 너무 많이 마셨네.."
+    NARR "디아블로가 잠에서 깬 다음 말을 했다."
+    DAV "여~ 어제는 잘 놀았냐?"
+    USER "어제 니가 취해서 노래부르고 막 장난 아니었지"
+    DAV "하하하!! 마음에 들었다면 다행이구나!"
+    USER "나베리우스한테 들었어 이번 파티 나를 위해서 열었다고"
+    DAV "나베리우스 이 녀석 쓸데없는 소리를.. 아무튼 나베리우스의 말대로 새로운 동료가 된 너를 축하하기 위해 연 파티였지"
+    USER "하하 역시 너는 착한 마족인 거 같아"
+    DAV "이 세상에는 착한 마족은 없다. 그리고 오늘 어디 좀 갈 거니깐 같이 가자."
+    USER "어디 가는데?"
+    DAV "가보면 알다 다른 애들도 같이 가니까 바로 갈 준비해줘"
+    USER "알았어"
+    "그렇게 다 모이고"
+    KEN "다 모인 건가?"
+    NABE "그런 거 같군"
+    DAV "그러면 가자"
+    "전쟁의 시작"
+    NARR "우리는 디아블로를 따라서 지하 깊은 곳으로 들어갔다."
+    NARR "가는 길에는 다른 애들이 아무런 말없이 조용히 디아블로의 뒤를 따라갔기 때문에\n나는 아무 말 없이 그 들을 따라 갔다."
+    NARR "그렇게 우리가 도착한 곳은 큰 문이 있는 곳이었다.\n문 앞에 도착한 디아블로는 가만히 멈춰 선 다음 입을 열었다."
+    DAV "들어가기 전에 몇 가지 약속을 해줘"
+    USER "약속?"
+    DAV "어"
+    USER "그 정도야 간단하지"
+    DAV "그냥 친구들끼리 약속하는 거니깐 크게 걱정할 필 요는 없어"
+    USER "알았어"
+    DAV "첫째. 방 안에서 있었던 일은 아무한테나 말하지 말 것\n둘째. 밖에서 문을 열기 전까지 문을 열지 말 것 \n셋째. 도망치지 말 것 그리고 마지막으로 넷째 꼭 살아서 돌아와라"
+    USER "?? 살아서 돌아오라니?? 그게 무슨뜻인데?"
+    NARR "디아블로는 문을 열고 나를 방 안으로 밀쳤다."
+    "방안"
+    USER "어이!!!! 야 인마!!! 뭐 하는 짓이야!!!"
+    NARR "나는 문을 두드리며 큰소리로 소리를 질렀지만 아무런 대답이 없었다.\n그리고 나는 마음속을 진정 시키고 주위를 둘러보면서 말했다."
+    USER "뭐 하는 곳이길래 그러지.. 그보다 너무 한거 아니냐 이렇게 어두운 곳에 보내다니"
+    NARR "나의 말이 끝나자 어두웠던 방 안에 있던 등불이 켜지자 내 앞에 있던 건 한 명의 마족이었다. 그 마족의 외형이 디아블로와 닮은 외형의 여자였다."
+    USER "디아블..로? 는... 아닌데..? 누구세요??"
+    ETC5 "이 곳에 인간 이라니.. 참 이상한 짓을 하네.."
+    LIL "소개하지 나는 릴리스라고 하네"
+    USER "릴리스?"
+    LIL "디아블로의 누나야"
+    USER "디아블로의 누나?!!"
+    LIL "놀랐어?"
+    USER "앗.. 네! 처음 뵙겠습니다."
+    NARR "릴리스는 웃으면서 말한다." 
+    LIL "후훗 편하게 해~"
+    USER "네.."
+    LIL "아무것도 모르고 온거지?"
+    USER "네.."
+    LIL "그러면 설명해 줄게 여기는 내가 살고 있는 다른 차원이라고 보면 돼"
+    USER "다른 차워..?"
+    LIL "자세한거는 넘어갈게"
+    USER "네.."
+    LIL "디아블로는 잘 지내?"
+    USER "조금 같이 지내 본 결과 자신의 방법대로 다른 마족들을 잘 이끌어 나가고 있어요"
+    LIL "그래? 다행이네"
+    USER "그리고 이번에 제가 왔다고 다른 마족들이랑 같이 파티 준비를 해줬어요"
+    LIL "나쁜길로 안 빠져들어서 다행이네.."
+    NARR "릴리스는 잠시 생각을 한 뒤 말을 한다."
+    LIL "이제 본론으로 넘어가서 인간치고는 강력한 마력을 지니고 있네?"
+    USER "마력이라는게 보여요?"
+    LIL "물론~ 평범한 마족들은 조금만 수련하면 보인고, 인간들 중에서도 보는 인간들도있고"
+    USER "그렇구나.."
+    LIL "마력을 보아하니 용사구나"
+    USER "어떻게 아셨어요?"
+    LIL "그렇게 거대한 마력을 가지고 있으면 누구든지 다 알아"
+    USER "대단하시네요"
+    LIL "그런데 그 용사가 왜 마족령에 있지?"
+    USER "실수로 코노로 왕을 죽여서 감옥에 갇혔는데,\n디아블로가 도와줘서 여기에 살고 있어요"
+    LIL "벌써 부터 꼬였구나.."
+    USER "뭐가 꼬인거죠??"
+    LIL "디아블로가 이 곳으로 아무 말 없이 데려왔다고 했지"
+    USER "네"
+    LIL "이런 중요한 것도 알려주지 않고.... 바보구나.."
+    NARR "나는 릴리스의 말에 침묵을 했고 릴리스는 말을 계속했다."
+    LIL "일단 몇가지 알려줄게 너는 용사야 그치?"
+    USER "그렇죠?"
+    LIL "그리고 너의 주 마법은 어둠 마법이 될 거야 알았지?"
+    USER "어둠 마법 이요..?"
+    LIL "일단 너는 어둠 마법을 쓰는 게 효율이 좋아 보이거든"
+    USER "그러면 제가 가지고 있는 능력은 어둠 마법쪽인 거에요?"
+    LIL "너의 능력이 뭔데? 보여줄 수 있어?"
+    USER "보여주기에는.. 발동 조건을 몰라서.."
+    LIL "발동 조건이라... 그러면 이건 어때?"
+    NARR "릴리스가 말을 끝나자 오크가 나타났다."
+    USER "어디서 나온거죠??"
+    LIL "그냥 간단하게 소환 한거야 그러면 너는 이제 오크가 너를 죽이려고 공격을하고 너는 능력으로 살아 남아봐"
+    USER "죽인다고요?!!"
+    NARR "나의 말이 끝나자 오크는 나를 향해 공격하기 시작했고\n순식간에 내 눈앞으로 이동한 오크는 도끼로 나를 찍었다."
+    USER "끄아아아악!!!! 아파!!!!!!!!"
+    LIL "흐음..."
+    NARR "도끼에 찍히자 나의 시야에는 시스템의 문구가 떴다."
+    SYSTEM "[[표적을 정합니다.]"
+    SYSTEM "[[발사하시겠습니까?]"
+    USER "ㅂ... 발사!!!!"
+    NARR "발사라고 외치자 나의 왼쪽 눈에서 한줄기의 레이저가 나가고 오크의 몸을 관통했다."
+    LIL "이거구나.."
+    NARR "릴리스는 감탄하듯 말을 한다."
+    USER " 하아... 하아.."
+    NARR "오크가 쓰러지자 나도 몸에 힘이 풀려 그대로 드러누웠다."
+    LIL "괜찮네..."
+    NARR "릴리스가 내 쪽으로 걸어오며 말을 한다."
+    LIL "꽤 괜찮은 능력이네"
+    USER "칭찬인가요? 저는 방금 죽을 뻔했는데.."
+    LIL "이런 걸로 죽으면 안되지"
+    USER "그러면 지금 당장 죽기 일보 직전 이니까 회복은 없나요?"
+    LIL "그 정도는 해줄게"
+    NARR "릴리스가 상처 난 부위에 손을 대자 상처가 회복된다."
+    USER "신기하네요"
+    LIL "인간들이 쓰는 회복 마법이야 이제 괜찮지?"
+    USER "네"
+    LIL "오크를 이기는 거는 잘했는데 아직 많이 부족하네 이대로 가다간 금방 죽겠어"
+    USER "평범하게 살면 되지 않을까요?"
+    LIL "평범? 이곳에 와서 평범하게? 그렇게 해줄 수 있지 너는 평범하게 살고 싶니?"
+    USER "이미 왕을 죽인 몸이라 평범하게는 못살 거 같네요"
+    LIL "그치 그러면 모든 일이 끝날 때까지는 평범하게 못 살 거야"
+    USER "하하하.."
+    NARR "릴리스의 말에 나는 헛 웃음을 한다."
+    USER "그러면 저는 이제 무엇을 하면 되나요?"
+    LIL "어떻게 하고 싶어?"
+    USER "어떻게 하고 싶다뇨?"
+    LIL "나의 제자가 되는건 어때?"
+    USER "제자 말인가요?"
+    LIL "어"
+    USER "어차피 여기 있는 동안 아무것도 못하니까 한번 해볼게요"
+    LIL "좋아 합격이다!! 디아블로가 너를 보낸 이유도 너를 강하게 만들려고 데려온거 같은데, 내가 너의 스승이 되어주지"
+    USER "스승이요?"
+    LIL "그렇다. 내가 너를 강하게 만들어 주마 다만, 죽을 정도로 힘들다는 것은 알고 있어라."
+    USER "........"
+    LIL "일단 너의 능력인 [[레이저]는 김 한 네가 생명에 위협을 받거나 아니면 상대를 적으로 간주했을 때 발동할 수 있는 것 같아"
+    USER "상대를 적으로 간주?"
+    LIL "어"
+    USER "그거를 알 수 있나요?"
+    LIL "아까 네 몸에 손을 댔을 때 잠깐 확인해봤지\n그런데 여러 가지 조건이 있어서 지금은 그 성능을 다 못 쓸 거야"
+    USER "잠깐 확인한 걸로 그 정도가 되면 스승님은 대단한 마족인가요?"
+    LIL "나는 원래 대단해서 이 정도는 별거 아니지 그러면 지금부터 교육을 시작할게"
+    NARR "그렇게 릴리스의 교육이 시작되었다."
+    "한 편 문 밖"
+    DAV "대화를 들어보니 오래 걸리겠네 너희들도 각자 수련을 하도록 해 교황이 언제 쳐들어 올지 모르니깐"
+    "내가 지하에 있는 방에 들어오고 며칠이 지났다."
+    USER "스승님?"
+    LIL "왜?"
+    USER "며칠 동안 여기서 배운 건 알아듣지 못하는 언어인데 맞아요?"
+    LIL "알아듣지 못한 거라니 엄연히 마족어라고"
+    USER "그게 문제인거죠!!!"
+    LIL "네가 그렇게 화내는 이유도 알고 있다. 참고 견뎌 네가 선택한 길이다. "
+    USER "으아아아아아아아아!!!!!!"
+    "그 시각 어느 나라"
+    ETC6 "교황님  다른 종족들과의 연합이 완성되었네요"
+    G "그렇다고 하네요 비륵"
+    BA "시기는 언제로 하실 건가요?"
+    G "저쪽도 슬슬 준비를 하고 있겠지요.\n지금부터 3주 뒤 저희 연합은 마족령을 습격할 겁니다."
+    BA "알겠습니다. 그러면 바로 갈 수 있게 준비를 할게요"
+    "다시 마족령"
+    DAV "김 한이 얼마나 강해질지는 모르겠지만.. 그를 믿어보자"
+    KEN "용사가 마법 쪽이어서 다행이네요 만약 검이나 격투가였으면 큰일이죠"
+    DAV "그런가.."
+    NABE "디아블로님 방금 들린 정보로는 교황이 3주 뒤에 습격을 한다고 했습니다."
+    DAV "꽤 빠르군"
+    MU "언제 공격해와도 저희들은 해낼 겁니다."
+    AGARES "당연한 소리를!"
+    DAV "무르무르"
+    MU "넵"
+    DAV "지금부터 인간이 공격하기 전까지 너는 시체 군단을 더 강화 시켜라"
+    MU "알겠습니다."
+    DAV "그리고 나베리우스"
+    NABE "부르셨습니까?"
+    DAV "너는 마족령 주위에 잠들어있는 가고일들을 깨워서 대기 시키고\n아가레스, 자켄 은 만일을 대비해 도망칠 공간을 만들어 놔라"
+    KEN "왜 그런 건 저희한테 시키시는 겁니까"
+    DAV "미래를 위해서다."
+    AGARES "잔말말고 따라와 자켄"
+    NARR "아가레스가 자켄을 끌고 간다."
+    KEN "으아아아!!"
+    "그렇게 2주뒤 방 안"
 
-init offset = -1
 
 
-################################################################################
-## 스타일
-################################################################################
 
-style default:
-    properties gui.text_properties()
-    language gui.language
 
-style input:
-    properties gui.text_properties("input", accent=True)
-    adjust_spacing False
 
-style hyperlink_text:
-    properties gui.text_properties("hyperlink", accent=True)
-    hover_underline True
 
-style gui_text:
-    properties gui.text_properties("interface")
 
 
-style button:
-    properties gui.button_properties("button")
 
-style button_text is gui_text:
-    properties gui.text_properties("button")
-    yalign 0.5
 
 
-style label_text is gui_text:
-    properties gui.text_properties("label", accent=True)
 
-style prompt_text is gui_text:
-    properties gui.text_properties("prompt")
 
 
-style bar:
-    ysize gui.bar_size
-    left_bar Frame("gui/bar/left.png", gui.bar_borders, tile=gui.bar_tile)
-    right_bar Frame("gui/bar/right.png", gui.bar_borders, tile=gui.bar_tile)
 
-style vbar:
-    xsize gui.bar_size
-    top_bar Frame("gui/bar/top.png", gui.vbar_borders, tile=gui.bar_tile)
-    bottom_bar Frame("gui/bar/bottom.png", gui.vbar_borders, tile=gui.bar_tile)
 
-style scrollbar:
-    ysize gui.scrollbar_size
-    base_bar Frame("gui/scrollbar/horizontal_[prefix_]bar.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/scrollbar/horizontal_[prefix_]thumb.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
 
-style vscrollbar:
-    xsize gui.scrollbar_size
-    base_bar Frame("gui/scrollbar/vertical_[prefix_]bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/scrollbar/vertical_[prefix_]thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
 
-style slider:
-    ysize gui.slider_size
-    base_bar Frame("gui/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
-    thumb "gui/slider/horizontal_[prefix_]thumb.png"
 
-style vslider:
-    xsize gui.slider_size
-    base_bar Frame("gui/slider/vertical_[prefix_]bar.png", gui.vslider_borders, tile=gui.slider_tile)
-    thumb "gui/slider/vertical_[prefix_]thumb.png"
 
 
-style frame:
-    padding gui.frame_borders.padding
-    background Frame("gui/frame.png", gui.frame_borders, tile=gui.frame_tile)
 
 
 
-################################################################################
-## 게임내 스크린
-################################################################################
 
 
-## Say 스크린 #####################################################################
-##
-## Say 스크린은 플레이어에게 대사를 출력할 때 씁니다. 화자 who와 대사 what, 두
-## 개의 매개변수를 받습니다. (화자 이름이 없으면 who는 None일 수 있음)
-##
-## 이 스크린은 id "what"을 가진 텍스트 디스플레이어블을 생성해야 합니다. (이 디
-## 스플레이어블은 렌파이의 대사 출력에 필요합니다.) id "who" 와 id "window" 디스
-## 플레이블이 존재할 경우 관련 스타일 속성이 적용됩니다.
-##
-## https://www.renpy.org/doc/html/screen_special.html#say
 
-screen say(who, what):
-    style_prefix "say"
 
-    window:
-        id "window"
 
-        if who is not None:
 
-            window:
-                id "namebox"
-                style "namebox"
-                text who id "who"
 
-        text what id "what"
 
 
-    ## 사이드 이미지가 있는 경우 글자 위에 표시합니다. 휴대폰 환경에서는 보이지
-    ## 않습니다.
-    if not renpy.variant("small"):
-        add SideImage() xalign 0.0 yalign 1.0
 
 
-## Character 객체를 통해 스타일을 지정할 수 있도록 namebox를 사용할 수 있게 만듭
-## 니다.
-init python:
-    config.character_id_prefixes.append('namebox')
 
-style window is default
-style say_label is default
-style say_dialogue is default
-style say_thought is say_dialogue
 
-style namebox is default
-style namebox_label is say_label
 
 
-style window:
-    xalign 0.5
-    xfill True
-    yalign gui.textbox_yalign
-    ysize gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
 
-style namebox:
-    xpos gui.name_xpos
-    xanchor gui.name_xalign
-    xsize gui.namebox_width
-    ypos gui.name_ypos
-    ysize gui.namebox_height
 
-    background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
-    padding gui.namebox_borders.padding
 
-style say_label:
-    properties gui.text_properties("name", accent=True)
-    xalign gui.name_xalign
-    yalign 0.5
 
-style say_dialogue:
-    properties gui.text_properties("dialogue")
 
-    xpos gui.dialogue_xpos
-    xsize gui.dialogue_width
-    ypos gui.dialogue_ypos
 
-    adjust_spacing False
 
-## Input 스크린 ###################################################################
-##
-## 플레이어 입력을 받는 renpy.input을 출력할 때 쓰이는 스크린입니다. prompt 매개
-## 변수를 통해 입력 지문을 표시할 수 있습니다.
-##
-## 이 스크린은 id "input"을 가진 input 디스플레이어블을 생성해야 합니다.
-##
-## https://www.renpy.org/doc/html/screen_special.html#input
 
-screen input(prompt):
-    style_prefix "input"
 
-    window:
 
-        vbox:
-            xanchor gui.dialogue_text_xalign
-            xpos gui.dialogue_xpos
-            xsize gui.dialogue_width
-            ypos gui.dialogue_ypos
 
-            text prompt style "input_prompt"
-            input id "input"
 
-style input_prompt is default
 
-style input_prompt:
-    xalign gui.dialogue_text_xalign
-    properties gui.text_properties("input_prompt")
 
-style input:
-    xalign gui.dialogue_text_xalign
-    xmaximum gui.dialogue_width
 
 
-## Choice 스크린 ##################################################################
-##
-## menu 명령어로 생성된 게임내 선택지를 출력하는 스크린입니다. 한 개의 매개변수
-## items를 받고, 이는 선택지 내용(caption)과 선택지 결과(action)이 있는 오브젝트
-## 가 들어있는 리스트입니다.
-##
-## https://www.renpy.org/doc/html/screen_special.html#choice
 
-screen choice(items):
-    style_prefix "choice"
 
-    vbox:
-        for i in items:
-            textbutton i.caption action i.action
 
 
-style choice_vbox is vbox
-style choice_button is button
-style choice_button_text is button_text
 
-style choice_vbox:
-    xalign 0.5
-    ypos 405
-    yanchor 0.5
 
-    spacing gui.choice_spacing
 
-style choice_button is default:
-    properties gui.button_properties("choice_button")
 
-style choice_button_text is default:
-    properties gui.button_text_properties("choice_button")
 
 
-## Quick Menu 스크린 ##############################################################
-##
-## 퀵메뉴는 게임 외 메뉴 접근성을 높여주기 위해 게임 내에 표시됩니다.
 
-screen quick_menu():
 
-    ## Ensure this appears on top of other screens.
-    zorder 100
 
-    if quick_menu:
 
-        hbox:
-            style_prefix "quick"
 
-            xalign 0.5
-            yalign 1.0
 
-            textbutton _("되감기") action Rollback()
-            textbutton _("대사록") action ShowMenu('history')
-            textbutton _("넘기기") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("자동진행") action Preference("auto-forward", "toggle")
-            textbutton _("저장하기") action ShowMenu('save')
-            textbutton _("Q.저장하기") action QuickSave()
-            textbutton _("Q.불러오기") action QuickLoad()
-            textbutton _("설정") action ShowMenu('preferences')
 
 
-## 플레이어가 UI(스크린)을 일부러 숨기지 않는 한 퀵메뉴가 게임 내에 오버레이로
-## 출력되게 합니다.
-init python:
-    config.overlay_screens.append("quick_menu")
 
-default quick_menu = True
 
-style quick_button is default
-style quick_button_text is button_text
 
-style quick_button:
-    properties gui.button_properties("quick_button")
 
-style quick_button_text:
-    properties gui.button_text_properties("quick_button")
 
 
-################################################################################
-## Main과 Game Menu 스크린
-################################################################################
 
-## Navigation 스크린 ##############################################################
-##
-## 이 스크린은 메인메뉴와 게임외 메뉴에 포함되어 다른 메뉴로 이동하거나 게임을
-## 시작/종료할 수 있게 합니다.
 
-screen navigation():
 
-    vbox:
-        style_prefix "navigation"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
 
-        spacing gui.navigation_spacing
 
-        if main_menu:
 
-            textbutton _("시작하기") action Start()
 
-        else:
 
-            textbutton _("대사록") action ShowMenu("history")
 
-            textbutton _("저장하기") action ShowMenu("save")
 
-        textbutton _("불러오기") action ShowMenu("load")
 
-        textbutton _("환경설정") action ShowMenu("preferences")
 
-        if _in_replay:
 
-            textbutton _("리플레이 끝내기") action EndReplay(confirm=True)
 
-        elif not main_menu:
 
-            textbutton _("메인 메뉴") action MainMenu()
 
-        textbutton _("버전정보") action ShowMenu("about")
 
-        if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
-            ## 도움말 메뉴는 모바일 디바이스와 맞지 않아 불필요합니다.
-            textbutton _("조작방법") action ShowMenu("help")
 
-        if renpy.variant("pc"):
 
-            ## The quit button is banned on iOS and unnecessary on Android and
-            ## Web.
-            textbutton _("종료하기") action Quit(confirm=not main_menu)
 
 
-style navigation_button is gui_button
-style navigation_button_text is gui_button_text
 
-style navigation_button:
-    size_group "navigation"
-    properties gui.button_properties("navigation_button")
 
-style navigation_button_text:
-    properties gui.button_text_properties("navigation_button")
 
 
-## Main Menu 스크린 ###############################################################
-##
-## 렌파이가 시작할 때 메인메뉴를 출력합니다.
-##
-## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
-screen main_menu():
 
-    ## This ensures that any other menu screen is replaced.
-    tag menu
 
-    add gui.main_menu_background
 
-    ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
 
-    ## use 명령어로 스크린 내에 다른 스크린을 불러옵니다. 메인 메뉴 스크린의 내
-    ## 용물은 navigation 스크린에 있습니다.
-    use navigation
 
-    if gui.show_name:
 
-        vbox:
-            style "main_menu_vbox"
 
-            text "[config.name!t]":
-                style "main_menu_title"
 
-            text "[config.version]":
-                style "main_menu_version"
 
 
-style main_menu_frame is empty
-style main_menu_vbox is vbox
-style main_menu_text is gui_text
-style main_menu_title is main_menu_text
-style main_menu_version is main_menu_text
 
-style main_menu_frame:
-    xsize 420
-    yfill True
 
-    background "gui/overlay/main_menu.png"
 
-style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
-    xmaximum 1200
-    yalign 1.0
-    yoffset -30
 
-style main_menu_text:
-    properties gui.text_properties("main_menu", accent=True)
 
-style main_menu_title:
-    properties gui.text_properties("title")
 
-style main_menu_version:
-    properties gui.text_properties("version")
 
 
-## Game Menu 스크린 ###############################################################
-##
-## 게임 메뉴의 기본 틀입니다. 매개변수 title로 스크린 제목을 정하고, 배경, 제목,
-## 그리고 navigation 스크린을 출력합니다.
-##
-## scroll 매개변수는, None, "viewport" 혹은 "vpgrid" 중 하나여야 합니다.
-## transclude 명령어를 통해 다른 스크린을 이 스크린 내부에 불러옵니다.
 
-screen game_menu(title, scroll=None, yinitial=0.0):
 
-    style_prefix "game_menu"
 
-    if main_menu:
-        add gui.main_menu_background
-    else:
-        add gui.game_menu_background
 
-    frame:
-        style "game_menu_outer_frame"
 
-        hbox:
 
-            ## Reserve space for the navigation section.
-            frame:
-                style "game_menu_navigation_frame"
 
-            frame:
-                style "game_menu_content_frame"
 
-                if scroll == "viewport":
 
-                    viewport:
-                        yinitial yinitial
-                        scrollbars "vertical"
-                        mousewheel True
-                        draggable True
-                        pagekeys True
 
-                        side_yfill True
 
-                        vbox:
-                            transclude
 
-                elif scroll == "vpgrid":
 
-                    vpgrid:
-                        cols 1
-                        yinitial yinitial
 
-                        scrollbars "vertical"
-                        mousewheel True
-                        draggable True
-                        pagekeys True
 
-                        side_yfill True
 
-                        transclude
 
-                else:
 
-                    transclude
 
-    use navigation
 
-    textbutton _("돌아가기"):
-        style "return_button"
 
-        action Return()
 
-    label title
 
-    if main_menu:
-        key "game_menu" action ShowMenu("main_menu")
 
 
-style game_menu_outer_frame is empty
-style game_menu_navigation_frame is empty
-style game_menu_content_frame is empty
-style game_menu_viewport is gui_viewport
-style game_menu_side is gui_side
-style game_menu_scrollbar is gui_vscrollbar
 
-style game_menu_label is gui_label
-style game_menu_label_text is gui_label_text
 
-style return_button is navigation_button
-style return_button_text is navigation_button_text
 
-style game_menu_outer_frame:
-    bottom_padding 45
-    top_padding 180
 
-    background "gui/overlay/game_menu.png"
 
-style game_menu_navigation_frame:
-    xsize 420
-    yfill True
 
-style game_menu_content_frame:
-    left_margin 60
-    right_margin 30
-    top_margin 15
 
-style game_menu_viewport:
-    xsize 1380
 
-style game_menu_vscrollbar:
-    unscrollable gui.unscrollable
 
-style game_menu_side:
-    spacing 15
 
-style game_menu_label:
-    xpos 75
-    ysize 180
 
-style game_menu_label_text:
-    size gui.title_text_size
-    color gui.accent_color
-    yalign 0.5
 
-style return_button:
-    xpos gui.navigation_xpos
-    yalign 1.0
-    yoffset -45
 
 
-## About 스크린 ###################################################################
-##
-## 이 스크린은 게임과 렌파이 엔진 크레딧과 저작권 정보를 표시합니다.
-##
-## 특별할 것이 없으므로 스크린을 새로 커스터마이징하여 만드는 예제이기도 합니다.
 
-screen about():
 
-    tag menu
 
-    ## 이 use 명령어로 game_menu 스크린을 이 스크린 내에 불러옵니다. use 명령어
-    ## 하위블럭(vbox 내용)은 game_menu 스크린 내 transclude 명령어가 있는 곳에
-    ## 다시 불려집니다.
-    use game_menu(_("버전정보"), scroll="viewport"):
 
-        style_prefix "about"
 
-        vbox:
 
-            label "[config.name!t]"
-            text _("버전 [config.version!t]\n")
 
-            ## gui.about 의 내용은 보통 options.rpy에 있습니다.
-            if gui.about:
-                text "[gui.about!t]\n"
 
-            text _("{a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only] 으로 만들어진 게임.\n\n[renpy.license!t]")
 
 
-style about_label is gui_label
-style about_label_text is gui_label_text
-style about_text is gui_text
 
-style about_label_text:
-    size gui.label_text_size
 
 
-## Load 그리고 Save 스크린 ###########################################################
-##
-## 이 스크린은 세이브/로드에 쓰입니다. 거의 동일하기 때문에, file_slots 스크린을
-## 불러와서 씁니다.
-##
-## https://www.renpy.org/doc/html/screen_special.html#save https://
-## www.renpy.org/doc/html/screen_special.html#load
 
-screen save():
 
-    tag menu
 
-    use file_slots(_("저장하기"))
 
 
-screen load():
 
-    tag menu
 
-    use file_slots(_("불러오기"))
 
 
-screen file_slots(title):
 
-    default page_name_value = FilePageNameInputValue(pattern=_("{} 페이지"), auto=_("자동 세이브"), quick=_("퀵세이브"))
 
-    use game_menu(title):
 
-        fixed:
 
-            ## input이 세이브/로드 버튼보다 먼저 엔터에 반응하도록 합니다.
-            order_reverse True
 
-            ## 페이지 제목을 플레이어가 수정할 수 있음.
-            button:
-                style "page_label"
 
-                key_events True
-                xalign 0.5
-                action page_name_value.Toggle()
 
-                input:
-                    style "page_label_text"
-                    value page_name_value
 
-            ## 파일 슬롯 그리드.
-            grid gui.file_slot_cols gui.file_slot_rows:
-                style_prefix "slot"
 
-                xalign 0.5
-                yalign 0.5
 
-                spacing gui.slot_spacing
 
-                for i in range(gui.file_slot_cols * gui.file_slot_rows):
 
-                    $ slot = i + 1
 
-                    button:
-                        action FileAction(slot)
 
-                        has vbox
 
-                        add FileScreenshot(slot) xalign 0.5
 
-                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("빈 슬롯")):
-                            style "slot_time_text"
 
-                        text FileSaveName(slot):
-                            style "slot_name_text"
 
-                        key "save_delete" action FileDelete(slot)
 
-            ## 페이지 이동 버튼.
-            hbox:
-                style_prefix "page"
 
-                xalign 0.5
-                yalign 1.0
 
-                spacing gui.page_spacing
 
-                textbutton _("<") action FilePagePrevious()
 
-                if config.has_autosave:
-                    textbutton _("{#auto_page}자동") action FilePage("auto")
 
-                if config.has_quicksave:
-                    textbutton _("{#quick_page}퀵") action FilePage("quick")
 
-                ## 범위(1, 10)는 1부터 9까지 숫자를 제공합니다.
-                for page in range(1, 10):
-                    textbutton "[page]" action FilePage(page)
 
-                textbutton _(">") action FilePageNext()
 
 
-style page_label is gui_label
-style page_label_text is gui_label_text
-style page_button is gui_button
-style page_button_text is gui_button_text
 
-style slot_button is gui_button
-style slot_button_text is gui_button_text
-style slot_time_text is slot_button_text
-style slot_name_text is slot_button_text
 
-style page_label:
-    xpadding 75
-    ypadding 5
 
-style page_label_text:
-    text_align 0.5
-    layout "subtitle"
-    hover_color gui.hover_color
 
-style page_button:
-    properties gui.button_properties("page_button")
 
-style page_button_text:
-    properties gui.button_text_properties("page_button")
 
-style slot_button:
-    properties gui.button_properties("slot_button")
 
-style slot_button_text:
-    properties gui.button_text_properties("slot_button")
 
 
-## Preferences 스크린 #############################################################
-##
-## Preferences 스크린에서는 각종 환경설정을 플레이어가 지정할 수 있습니다.
-##
-## https://www.renpy.org/doc/html/screen_special.html#preferences
 
-screen preferences():
 
-    tag menu
 
-    use game_menu(_("환경설정"), scroll="viewport"):
 
-        vbox:
 
-            hbox:
-                box_wrap True
 
-                if renpy.variant("pc") or renpy.variant("web"):
 
-                    vbox:
-                        style_prefix "radio"
-                        label _("화면 모드")
-                        textbutton _("창 화면") action Preference("display", "window")
-                        textbutton _("전체 화면") action Preference("display", "fullscreen")
 
-                vbox:
-                    style_prefix "check"
-                    label _("넘기기")
-                    textbutton _("읽지 않은 지문") action Preference("skip", "toggle")
-                    textbutton _("선택지 이후") action Preference("after choices", "toggle")
-                    textbutton _("화면 전환 효과") action InvertSelected(Preference("transitions", "toggle"))
 
-                ## "radio_pref" 나 "check_pref" 를 추가하여 그 외에도 환경설정
-                ## 항목을 추가할 수 있습니다.
 
-            null height (4 * gui.pref_spacing)
 
-            hbox:
-                style_prefix "slider"
-                box_wrap True
 
-                vbox:
 
-                    label _("텍스트 속도")
 
-                    bar value Preference("text speed")
 
-                    label _("자동 진행 시간")
 
-                    bar value Preference("auto-forward time")
 
-                vbox:
 
-                    if config.has_music:
-                        label _("배경음 음량")
 
-                        hbox:
-                            bar value Preference("music volume")
 
-                    if config.has_sound:
 
-                        label _("효과음 음량")
 
-                        hbox:
-                            bar value Preference("sound volume")
 
-                            if config.sample_sound:
-                                textbutton _("테스트") action Play("sound", config.sample_sound)
 
 
-                    if config.has_voice:
-                        label _("음성 음량")
 
-                        hbox:
-                            bar value Preference("voice volume")
 
-                            if config.sample_voice:
-                                textbutton _("테스트") action Play("voice", config.sample_voice)
 
-                    if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
 
-                        textbutton _("모두 음소거"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
 
 
-style pref_label is gui_label
-style pref_label_text is gui_label_text
-style pref_vbox is vbox
 
-style radio_label is pref_label
-style radio_label_text is pref_label_text
-style radio_button is gui_button
-style radio_button_text is gui_button_text
-style radio_vbox is pref_vbox
 
-style check_label is pref_label
-style check_label_text is pref_label_text
-style check_button is gui_button
-style check_button_text is gui_button_text
-style check_vbox is pref_vbox
 
-style slider_label is pref_label
-style slider_label_text is pref_label_text
-style slider_slider is gui_slider
-style slider_button is gui_button
-style slider_button_text is gui_button_text
-style slider_pref_vbox is pref_vbox
 
-style mute_all_button is check_button
-style mute_all_button_text is check_button_text
 
-style pref_label:
-    top_margin gui.pref_spacing
-    bottom_margin 3
 
-style pref_label_text:
-    yalign 1.0
 
-style pref_vbox:
-    xsize 338
 
-style radio_vbox:
-    spacing gui.pref_button_spacing
 
-style radio_button:
-    properties gui.button_properties("radio_button")
-    foreground "gui/button/radio_[prefix_]foreground.png"
 
-style radio_button_text:
-    properties gui.button_text_properties("radio_button")
 
-style check_vbox:
-    spacing gui.pref_button_spacing
 
-style check_button:
-    properties gui.button_properties("check_button")
-    foreground "gui/button/check_[prefix_]foreground.png"
 
-style check_button_text:
-    properties gui.button_text_properties("check_button")
 
-style slider_slider:
-    xsize 525
 
-style slider_button:
-    properties gui.button_properties("slider_button")
-    yalign 0.5
-    left_margin 15
 
-style slider_button_text:
-    properties gui.button_text_properties("slider_button")
 
-style slider_vbox:
-    xsize 675
 
 
-## History 스크린 #################################################################
-##
-## 지난 대사록을 출력합니다. _history_list 에 저장된 대사 기록을 확인합니다.
-##
-## https://www.renpy.org/doc/html/history.html
 
-screen history():
 
-    tag menu
 
-    ## 이 스크린은 내용이 아주 많을 수 있으므로 prediction을 끕니다.
-    predict False
 
-    use game_menu(_("대사록"), scroll=("vpgrid" if gui.history_height else "viewport"), yinitial=1.0):
 
-        style_prefix "history"
 
-        for h in _history_list:
 
-            window:
 
-                ## history_height 이 None일 경우 레이아웃이 틀어지지 않게 합니
-                ## 다.
-                has fixed:
-                    yfit True
 
-                if h.who:
 
-                    label h.who:
-                        style "history_name"
-                        substitute False
 
-                        ## 화자 Character에 화자 색깔이 지정되어 있으면 불러옵니
-                        ## 다.
-                        if "color" in h.who_args:
-                            text_color h.who_args["color"]
 
-                $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
-                text what:
-                    substitute False
 
-        if not _history_list:
-            label _("대사가 없습니다.")
 
 
-## 이것은 대사록 화면에 표시할 수 있는 태그를 결정합니다.
 
-define gui.history_allow_tags = { "alt", "noalt", "rt", "rb", "art" }
 
 
-style history_window is empty
 
-style history_name is gui_label
-style history_name_text is gui_label_text
-style history_text is gui_text
 
-style history_label is gui_label
-style history_label_text is gui_label_text
 
-style history_window:
-    xfill True
-    ysize gui.history_height
 
-style history_name:
-    xpos gui.history_name_xpos
-    xanchor gui.history_name_xalign
-    ypos gui.history_name_ypos
-    xsize gui.history_name_width
 
-style history_name_text:
-    min_width gui.history_name_width
-    text_align gui.history_name_xalign
 
-style history_text:
-    xpos gui.history_text_xpos
-    ypos gui.history_text_ypos
-    xanchor gui.history_text_xalign
-    xsize gui.history_text_width
-    min_width gui.history_text_width
-    text_align gui.history_text_xalign
-    layout ("subtitle" if gui.history_text_xalign else "tex")
 
-style history_label:
-    xfill True
 
-style history_label_text:
-    xalign 0.5
 
 
-## Help 스크린 ####################################################################
-##
-## 입력장치의 기능을 설명합니다. 각 입력장치별 설정은 keyboard_help, mouse_help,
-## gamepad_help 스크린을 각각 불러와서 출력합니다.
 
-screen help():
 
-    tag menu
 
-    default device = "keyboard"
 
-    use game_menu(_("조작방법"), scroll="viewport"):
 
-        style_prefix "help"
 
-        vbox:
-            spacing 23
 
-            hbox:
 
-                textbutton _("키보드") action SetScreenVariable("device", "keyboard")
-                textbutton _("마우스") action SetScreenVariable("device", "mouse")
 
-                if GamepadExists():
-                    textbutton _("게임패드") action SetScreenVariable("device", "gamepad")
 
-            if device == "keyboard":
-                use keyboard_help
-            elif device == "mouse":
-                use mouse_help
-            elif device == "gamepad":
-                use gamepad_help
 
 
-screen keyboard_help():
 
-    hbox:
-        label _("엔터(Enter)")
-        text _("대사 진행 및 UI (선택지 포함) 선택.")
 
-    hbox:
-        label _("스페이스(Space)")
-        text _("대사를 진행하되 선택지는 선택하지 않음.")
 
-    hbox:
-        label _("화살표 키")
-        text _("UI 이동.")
 
-    hbox:
-        label _("이스케이프(Esc)")
-        text _("게임 메뉴 불러옴.")
 
-    hbox:
-        label _("컨트롤(Ctrl)")
-        text _("누르고 있는 동안 대사를 스킵.")
 
-    hbox:
-        label _("탭(Tab)")
-        text _("대사 스킵 토글.")
 
-    hbox:
-        label _("페이지 업(Page Up)")
-        text _("이전 대사로 롤백.")
 
-    hbox:
-        label _("페이지 다운(Page Down)")
-        text _("이후 대사로 롤포워드.")
 
-    hbox:
-        label "H"
-        text _("UI를 숨김.")
 
-    hbox:
-        label "S"
-        text _("스크린샷 저장.")
 
-    hbox:
-        label "V"
-        text _("{a=https://www.renpy.org/l/voicing}대사 읽어주기 기능{/a} 토글.")
 
-    hbox:
-        label "Shift+A"
-        text _("Opens the accessibility menu.")
 
 
-screen mouse_help():
 
-    hbox:
-        label _("클릭")
-        text _("대사 진행 및 UI (선택지 포함) 선택.")
 
-    hbox:
-        label _("가운데 버튼이나 휠버튼 클릭")
-        text _("UI를 숨김.")
 
-    hbox:
-        label _("우클릭")
-        text _("게임 메뉴 불러옴.")
 
-    hbox:
-        label _("휠 위로\n롤백 클릭")
-        text _("이전 대사로 롤백.")
 
-    hbox:
-        label _("휠 아래로")
-        text _("이후 대사로 롤포워드.")
 
 
-screen gamepad_help():
 
-    hbox:
-        label _("오른쪽 트리거(RT)\nA버튼/아래 버튼")
-        text _("대사 진행 및 UI (선택지 포함) 선택.")
 
-    hbox:
-        label _("Left Trigger\nLeft Shoulder")
-        text _("이전 대사로 롤백.")
 
-    hbox:
-        label _("오른쪽 범퍼(RB)")
-        text _("이후 대사로 롤포워드.")
 
 
-    hbox:
-        label _("D-Pad, 아날로그 스틱")
-        text _("UI 이동.")
 
-    hbox:
-        label _("스타트 버튼/가이드 버튼")
-        text _("게임 메뉴 불러옴.")
 
-    hbox:
-        label _("Y버튼/위 버튼")
-        text _("UI를 숨김.")
 
-    textbutton _("조정") action GamepadCalibrate()
 
 
-style help_button is gui_button
-style help_button_text is gui_button_text
-style help_label is gui_label
-style help_label_text is gui_label_text
-style help_text is gui_text
 
-style help_button:
-    properties gui.button_properties("help_button")
-    xmargin 12
 
-style help_button_text:
-    properties gui.button_text_properties("help_button")
 
-style help_label:
-    xsize 375
-    right_padding 30
 
-style help_label_text:
-    size gui.text_size
-    xalign 1.0
-    text_align 1.0
 
 
 
-################################################################################
-## 그 외 스크린
-################################################################################
 
 
-## Confirm 스크린 #################################################################
-##
-## 게임 입력 관련 예/아니오 질문을 플레이어에게 할 때 이 스크린을 표시합니다.
-##
-## https://www.renpy.org/doc/html/screen_special.html#confirm
 
-screen confirm(message, yes_action, no_action):
 
-    ## 이 스크린이 출력 중일 때 다른 스크린과 상호작용할 수 없게 합니다.
-    modal True
 
-    zorder 200
 
-    style_prefix "confirm"
 
-    add "gui/overlay/confirm.png"
 
-    frame:
 
-        vbox:
-            xalign .5
-            yalign .5
-            spacing 45
 
-            label _(message):
-                style "confirm_prompt"
-                xalign 0.5
 
-            hbox:
-                xalign 0.5
-                spacing 150
 
-                textbutton _("네") action yes_action
-                textbutton _("아니오") action no_action
 
-    ## 우클릭과 esc는 '아니오'를 입력하는 것과 같습니다.
-    key "game_menu" action no_action
 
 
-style confirm_frame is gui_frame
-style confirm_prompt is gui_prompt
-style confirm_prompt_text is gui_prompt_text
-style confirm_button is gui_medium_button
-style confirm_button_text is gui_medium_button_text
 
-style confirm_frame:
-    background Frame([ "gui/confirm_frame.png", "gui/frame.png"], gui.confirm_frame_borders, tile=gui.frame_tile)
-    padding gui.confirm_frame_borders.padding
-    xalign .5
-    yalign .5
 
-style confirm_prompt_text:
-    text_align 0.5
-    layout "subtitle"
 
-style confirm_button:
-    properties gui.button_properties("confirm_button")
 
-style confirm_button_text:
-    properties gui.button_text_properties("confirm_button")
 
 
-## Skip indicator 스크린 ##########################################################
-##
-## Skip_indicator 스크린은 스킵 중일 때 "스킵 중"을 표시하기 위해 출력됩니다.
-##
-## https://www.renpy.org/doc/html/screen_special.html#skip-indicator
 
-screen skip_indicator():
 
-    zorder 100
-    style_prefix "skip"
 
-    frame:
 
-        hbox:
-            spacing 9
 
-            text _("넘기는 중")
 
-            text "▸" at delayed_blink(0.0, 1.0) style "skip_triangle"
-            text "▸" at delayed_blink(0.2, 1.0) style "skip_triangle"
-            text "▸" at delayed_blink(0.4, 1.0) style "skip_triangle"
 
 
-## 이 transform으로 화살표를 순서대로 페이드인/페이드아웃합니다.
-transform delayed_blink(delay, cycle):
-    alpha .5
 
-    pause delay
 
-    block:
-        linear .2 alpha 1.0
-        pause .2
-        linear .2 alpha 0.5
-        pause (cycle - .4)
-        repeat
 
 
-style skip_frame is empty
-style skip_text is gui_text
-style skip_triangle is skip_text
 
-style skip_frame:
-    ypos gui.skip_ypos
-    background Frame("gui/skip.png", gui.skip_frame_borders, tile=gui.frame_tile)
-    padding gui.skip_frame_borders.padding
 
-style skip_text:
-    size gui.notify_text_size
 
-style skip_triangle:
-    ## BLACK RIGHT-POINTING SMALL TRIANGLE 글리프가 있는 글꼴을 사용해야 합니다.
-    font "DejaVuSans.ttf"
 
 
-## Notify 스크린 ##################################################################
-##
-## Notify 스크린으로 플레이어에게 메시지를 출력합니다. (예를 들어 '퀵세이브 완
-## 료'나 '스크린샷 저장 완료')
-##
-## https://www.renpy.org/doc/html/screen_special.html#notify-screen
 
-screen notify(message):
 
-    zorder 100
-    style_prefix "notify"
 
-    frame at notify_appear:
-        text "[message!tq]"
 
-    timer 3.25 action Hide('notify')
 
 
-transform notify_appear:
-    on show:
-        alpha 0
-        linear .25 alpha 1.0
-    on hide:
-        linear .5 alpha 0.0
 
 
-style notify_frame is empty
-style notify_text is gui_text
 
-style notify_frame:
-    ypos gui.notify_ypos
 
-    background Frame("gui/notify.png", gui.notify_frame_borders, tile=gui.frame_tile)
-    padding gui.notify_frame_borders.padding
 
-style notify_text:
-    properties gui.text_properties("notify")
 
 
-## NVL 스크린 #####################################################################
-##
-## NVL모드 대사와 선택지를 출력합니다.
-##
-## https://www.renpy.org/doc/html/screen_special.html#nvl
 
 
-screen nvl(dialogue, items=None):
 
-    window:
-        style "nvl_window"
 
-        has vbox:
-            spacing gui.nvl_spacing
 
-        ## vpgrid나 vbox 내에 대사를 출력합니다.
-        if gui.nvl_height:
 
-            vpgrid:
-                cols 1
-                yinitial 1.0
 
-                use nvl_dialogue(dialogue)
 
-        else:
 
-            use nvl_dialogue(dialogue)
 
-        ## Displays the menu, if given. The menu may be displayed incorrectly if
-        ## config.narrator_menu is set to True.
-        for i in items:
 
-            textbutton i.caption:
-                action i.action
-                style "nvl_button"
 
-    add SideImage() xalign 0.0 yalign 1.0
 
 
-screen nvl_dialogue(dialogue):
 
-    for d in dialogue:
 
-        window:
-            id d.window_id
 
-            fixed:
-                yfit gui.nvl_height is None
 
-                if d.who is not None:
 
-                    text d.who:
-                        id d.who_id
 
-                text d.what:
-                    id d.what_id
 
 
-## 동시에 출력될 수 있는 NVL 대사의 최대치를 조정합니다.
-define config.nvl_list_length = gui.nvl_list_length
 
-style nvl_window is default
-style nvl_entry is default
 
-style nvl_label is say_label
-style nvl_dialogue is say_dialogue
 
-style nvl_button is button
-style nvl_button_text is button_text
 
-style nvl_window:
-    xfill True
-    yfill True
 
-    background "gui/nvl.png"
-    padding gui.nvl_borders.padding
 
-style nvl_entry:
-    xfill True
-    ysize gui.nvl_height
 
-style nvl_label:
-    xpos gui.nvl_name_xpos
-    xanchor gui.nvl_name_xalign
-    ypos gui.nvl_name_ypos
-    yanchor 0.0
-    xsize gui.nvl_name_width
-    min_width gui.nvl_name_width
-    text_align gui.nvl_name_xalign
 
-style nvl_dialogue:
-    xpos gui.nvl_text_xpos
-    xanchor gui.nvl_text_xalign
-    ypos gui.nvl_text_ypos
-    xsize gui.nvl_text_width
-    min_width gui.nvl_text_width
-    text_align gui.nvl_text_xalign
-    layout ("subtitle" if gui.nvl_text_xalign else "tex")
 
-style nvl_thought:
-    xpos gui.nvl_thought_xpos
-    xanchor gui.nvl_thought_xalign
-    ypos gui.nvl_thought_ypos
-    xsize gui.nvl_thought_width
-    min_width gui.nvl_thought_width
-    text_align gui.nvl_thought_xalign
-    layout ("subtitle" if gui.nvl_text_xalign else "tex")
 
-style nvl_button:
-    properties gui.button_properties("nvl_button")
-    xpos gui.nvl_button_xpos
-    xanchor gui.nvl_button_xalign
 
-style nvl_button_text:
-    properties gui.button_text_properties("nvl_button")
 
 
 
-################################################################################
-## 모바일 버전
-################################################################################
 
-style pref_vbox:
-    variant "medium"
-    xsize 675
 
-## 마우스가 없고 화면이 작을 가능성이 높으므로, 퀵메뉴 버튼의 크기를 키우고 가짓
-## 수를 줄입니다.
-screen quick_menu():
-    variant "touch"
 
-    zorder 100
 
-    if quick_menu:
 
-        hbox:
-            style_prefix "quick"
 
-            xalign 0.5
-            yalign 1.0
 
-            textbutton _("되감기") action Rollback()
-            textbutton _("넘기기") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("자동진행") action Preference("auto-forward", "toggle")
-            textbutton _("메뉴") action ShowMenu()
 
 
-style window:
-    variant "small"
-    background "gui/phone/textbox.png"
 
-style radio_button:
-    variant "small"
-    foreground "gui/phone/button/radio_[prefix_]foreground.png"
 
-style check_button:
-    variant "small"
-    foreground "gui/phone/button/check_[prefix_]foreground.png"
 
-style nvl_window:
-    variant "small"
-    background "gui/phone/nvl.png"
 
-style main_menu_frame:
-    variant "small"
-    background "gui/phone/overlay/main_menu.png"
 
-style game_menu_outer_frame:
-    variant "small"
-    background "gui/phone/overlay/game_menu.png"
 
-style game_menu_navigation_frame:
-    variant "small"
-    xsize 510
 
-style game_menu_content_frame:
-    variant "small"
-    top_margin 0
 
-style pref_vbox:
-    variant "small"
-    xsize 600
 
-style bar:
-    variant "small"
-    ysize gui.bar_size
-    left_bar Frame("gui/phone/bar/left.png", gui.bar_borders, tile=gui.bar_tile)
-    right_bar Frame("gui/phone/bar/right.png", gui.bar_borders, tile=gui.bar_tile)
 
-style vbar:
-    variant "small"
-    xsize gui.bar_size
-    top_bar Frame("gui/phone/bar/top.png", gui.vbar_borders, tile=gui.bar_tile)
-    bottom_bar Frame("gui/phone/bar/bottom.png", gui.vbar_borders, tile=gui.bar_tile)
 
-style scrollbar:
-    variant "small"
-    ysize gui.scrollbar_size
-    base_bar Frame("gui/phone/scrollbar/horizontal_[prefix_]bar.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/phone/scrollbar/horizontal_[prefix_]thumb.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
 
-style vscrollbar:
-    variant "small"
-    xsize gui.scrollbar_size
-    base_bar Frame("gui/phone/scrollbar/vertical_[prefix_]bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/phone/scrollbar/vertical_[prefix_]thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
 
-style slider:
-    variant "small"
-    ysize gui.slider_size
-    base_bar Frame("gui/phone/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
-    thumb "gui/phone/slider/horizontal_[prefix_]thumb.png"
 
-style vslider:
-    variant "small"
-    xsize gui.slider_size
-    base_bar Frame("gui/phone/slider/vertical_[prefix_]bar.png", gui.vslider_borders, tile=gui.slider_tile)
-    thumb "gui/phone/slider/vertical_[prefix_]thumb.png"
 
-style slider_vbox:
-    variant "small"
-    xsize None
 
-style slider_slider:
-    variant "small"
-    xsize 900
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    return
+label cancel_fire:
+    return
