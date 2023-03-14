@@ -19,7 +19,7 @@ define AGARES = Character('아가레스', color= "#abe77a")
 define ETC1 = Character('마족들', color= "#fcfcfc")
 define MU = Character('무르무르', color= "#0ff8d1")
 define MAHA = Character('마하', color= "#084663")
-define ETR2 = Character('엘프1', color= "#25d373")
+define ETC2 = Character('엘프1', color= "#25d373")
 define KAR = Character('카르', color= "#086e2a")
 define ETC3 = Character('종업원', color= "#f8f7f7")
 define ETC4 = Character('경비병1', color= "#fdfdfd")
@@ -30,6 +30,7 @@ define GORREM = Character('골렘', color= "#8d6853fa")
 define NARR = Character('나레이션', color= "#10942c")
 define SYSTEM = Character('시스템', color= "#ffffff")
 define ETC5 = Character('마족', color= "#fcfcfc")
-efine ETC6 = Character('대사제', color= "#fcfcfc")
-#선택지 :144 , 240 , 
-#글자 크기 크게 : 359 ,363
+define ETC6 = Character('대사제', color= "#fcfcfc")
+define ETC7 = Character('인간들', color= "#fcfcfc")
+#선택지 :144 , 240 , ,543 , 
+#글자 크기 크게 : 359 ,363 , 489 , 
