@@ -32,5 +32,7 @@ define SYSTEM = Character('시스템', color= "#ffffff")
 define ETC5 = Character('마족', color= "#fcfcfc")
 define ETC6 = Character('대사제', color= "#fcfcfc")
 define ETC7 = Character('인간들', color= "#fcfcfc")
+define ETC8 = Character('인간', color= "fcfcfc"
+)
 #선택지 :144 , 240 , ,543 , 
 #글자 크기 크게 : 359 ,363 , 489 , 
