@@ -1,15 +1,15 @@
 # 게임에서 사용할 캐릭터를 정의합니다.
 define USER = Character('김 한', color="#c8ffc8")
 define DAV = Character('디아블로', color= "#551313")
-define AL = Character('알리', color= "#5a5c07")
-define ALA = Character('알레아', color= "#f5e50cff")
+define ALLI = Character('알리', color= "#5a5c07")
+define ALLEA = Character('알레아', color= "#f5e50cff")
 define JAN = Character('잔', color= "#a05111")
-define MA = Character('마튼', color= "#42ebe2")
+define MARTON = Character('마튼', color= "#42ebe2")
 define ETC = Character('병사', color= "#fffefe")
 define G = Character('교황', color= "#530202")
 define BA = Character('바륵', color= "#530202")
 define J = Character('재운', color= "#c0c2ad")
-define MS  = Character('미셸', color= "#008bfd")
+define Michele  = Character('미셸', color= "#008bfd")
 define MEKIA = Character('메키아', color= "#cc02ff")
 define LIL = Character('릴리스', color= "#681818")
 define HAN = Character('한', color= "#851a1a")
@@ -32,7 +32,9 @@ define SYSTEM = Character('시스템', color= "#ffffff")
 define ETC5 = Character('마족', color= "#fcfcfc")
 define ETC6 = Character('대사제', color= "#fcfcfc")
 define ETC7 = Character('인간들', color= "#fcfcfc")
-define ETC8 = Character('인간', color= "fcfcfc"
-)
+define ETC8 = Character('인간', color= "fcfcfc")
+define ETC9 = Character('소녀', color= "fcfcfc")
+define ETC11 = Character('여자', color= "fcfcfc")
+define ETC10 = Character('숲의 수호신', color= "fcfcfc")
 #선택지 :144 , 240 , ,543 , 
-#글자 크기 크게 : 359 ,363 , 489 , 859 , 887 , 891
+#글자 크기 크게 : 359 ,363 , 489 , 859 , 887 , 891 , 927
