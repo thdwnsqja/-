@@ -1,10 +1,10 @@
 # 게임에서 사용할 캐릭터를 정의합니다.
 define USER = Character('김 한', color="#c8ffc8")
 define DAV = Character('디아블로', color= "#551313")
-define ALLI = Character('알리', color= "#5a5c07")
-define ALLEA = Character('알레아', color= "#f5e50cff")
+define AL = Character('알리', color= "#5a5c07")
+define ALA = Character('알레아', color= "#f5e50cff")
 define JAN = Character('잔', color= "#a05111")
-define MARTON = Character('마튼', color= "#42ebe2")
+define MA = Character('마튼', color= "#42ebe2")
 define ETC = Character('병사', color= "#fffefe")
 define G = Character('교황', color= "#530202")
 define BA = Character('바륵', color= "#530202")
