@@ -37,5 +37,6 @@ define ETC9 = Character('소녀', color= "fcfcfc")
 define ETC11 = Character('여자', color= "fcfcfc")
 define ETC10 = Character('숲의 수호신', color= "fcfcfc")
 define ETC12 = Character('편지 내용', color= "fcfcfc")
+define ETC13 = Character('마을 사람', color= "fcfcfc")
 #선택지 :144 , 240 , ,543 , 1249
 #글자 크기 크게 : 359 ,363 , 489 , 859 , 887 , 891 , 927
