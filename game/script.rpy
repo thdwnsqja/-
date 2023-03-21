@@ -1311,7 +1311,9 @@ label did_fire:
     G "우리 부족....? 오니들이 살았던 곳에 생존자는 빠짐없이 죽이라고 했는데.."
     MEKIA "이 자식이!!!"
     G "너도 꿇어라.."
-    
+    MAKIA "크윽..."
+    G "내가 일어나 라고 하기 전 까지는 그대로 있어야 될 것이야"
+    G
     return
 label cancel_fire:
     return
