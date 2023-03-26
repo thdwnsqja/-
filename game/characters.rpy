@@ -44,6 +44,9 @@ define MARIA = Character('마리아', color='509E42')
 define ERT = Character('에르텐', color='363879')
 define ETC16 = Character('남자1',color= '363879')
 define ETC17 = Character('남자2', color= '363879')
+define den = Character('에덴', color= '363879')
+define ETC18 = Character('수녀', color= '363879')
+define ETC19 = Character('에르텐 , 에덴',color = '363879')
 #선택지 :144 , 240 , ,543 , 1249
 #글자 크기 크게 : 8 , 99 , 289 , 359 , 363 , 481 , 489 , 724, 777 , 859 , 887 , 891 , 927 , 1025 , 1277
 #1364, 1366 , 1435 , 1521 ,
