@@ -49,6 +49,10 @@ define ETC18 = Character('수녀', color= '363879')
 define ETC19 = Character('에르텐 , 에덴',color= '363879')
 define ETC20 = Character('???', color= 'fcfcfc')
 define ETC21 = Character('여자', color= 'fcfcfc')
+define arek = Character('아르키', color= 'C089BD')
+define ETC22 = Character('이야기 속 교황', color= '726F72')
+define ETC23 = Character('이야기 속 어린 교황 엄마', color= '726F72')
+define ETC24 = Character('이야기 속 어린 교황 아빠', color= '726F72')
 #선택지 :141 , 222 , 253 ,528 , 1249
 #글자 크기 크게 : 8 , 99 , 289 , 359 , 363 , 481 , 488 , 258 , 666 , 777 , 859 , 887 , 891 , 927 , 1025 , 1277
 #1364, 1366 , 1435 , 1521 ,
