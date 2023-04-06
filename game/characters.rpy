@@ -19,7 +19,7 @@ define AGARES = Character('아가레스', color= "#abe77a")
 define ETC1 = Character('마족들', color= "#fcfcfc")
 define MURMUR = Character('무르무르', color= "#0ff8d1")
 define MAHA = Character('마하', color= "#084663")
-define ETC2 = Character('엘프1', color= "#25d373")
+define EIF = Character('엘프1', color= "#25d373")
 define KAR = Character('카르', color= "#086e2a")
 define ETC3 = Character('종업원', color= "#f8f7f7")
 define ETC4 = Character('경비병1', color= "#fdfdfd")
@@ -55,6 +55,7 @@ define ETC23 = Character('이야기 속 어린 교황 엄마', color= '726F72')
 define ETC24 = Character('이야기 속 어린 교황 아빠', color= '726F72')
 define ETC25 = Character('선물가게 점원', color= 'fcfcfc')
 define ETC26 = Character('마리아 , 미셸', color= 'fcfcfc')
+define ETC27 = Character('예언가', color= '726F72')
 #선택지 :141 , 222 , 253 ,528 , 1249
 #글자 크기 크게 : 8 , 99 , 289 , 359 , 363 , 481 , 488 , 258 , 666 , 777 , 859 , 887 , 891 , 927 , 1025 , 1277
 #1364, 1366 , 1435 , 1521 ,
