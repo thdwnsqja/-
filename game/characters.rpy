@@ -57,6 +57,7 @@ define ETC25 = Character('선물가게 점원', color= 'fcfcfc')
 define ETC26 = Character('마리아 , 미셸', color= 'fcfcfc')
 define ETC27 = Character('예언가', color= '726F72')
 define ETC28 = Character('김한 , 메키아', color= 'c8ffc8')
+define ETC29 = Character('김한 , 마하 , 미셸', color= 'c8ffc8')
 #선택지 :141 , 222 , 253 ,528 , 1249
 #글자 크기 크게 : 8 , 99 , 289 , 359 , 363 , 481 , 488 , 258 , 666 , 777 , 859 , 887 , 891 , 927 , 1025 , 1277
 #1364, 1366 , 1435 , 1521 ,
